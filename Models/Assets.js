@@ -22,7 +22,7 @@ function slugify(string) {
 const Assets = new schma({
   name: { type: String, unique: true },
   Transaction: [],
-  Balance: { type: Number },
+  Balance: { type: Number, default: 0 },
   parent: {
     type: schma.Types.ObjectId,
     default: null,
@@ -39,6 +39,7 @@ const Assets = new schma({
       slug: String,
     },
   ],
+  Currency: { type: String, default: "Rupee (pkr)" },
   slug: { type: String, index: true },
 });
 

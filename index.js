@@ -6,6 +6,7 @@ const mongo = require("./DB/connect");
 // rendering routes
 
 app.use("", require("./Routers/Routers"));
+app.use("", require("./Routers/Transaction_routers"));
 
 // Listening on this port
 

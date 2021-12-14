@@ -75,7 +75,6 @@ exports.addAssetsaccount = async (req, res, next) => {
     });
   }
 };
-
 // change revenue account
 exports.updateAssetsaccount = async (req, res, next) => {
   if (req.body.id == "" || req.body.id == undefined) {
@@ -112,9 +111,7 @@ exports.updateAssetsaccount = async (req, res, next) => {
     });
   }
 };
-
 // delete revenue account from
-
 exports.deleteAssetsaccount = async (req, res) => {
   if (req.body.id == "" || req.body.id == undefined) {
     res.status(400).send({ Message: "Id missing  :: Enter again" });
@@ -129,9 +126,7 @@ exports.deleteAssetsaccount = async (req, res) => {
     });
   }
 };
-
 // read all accounts
-
 exports.readallAssetsaccounts = async (req, res) => {
   if (req.body.name) {
     Assets.find(
@@ -214,7 +209,6 @@ exports.addEquityaccount = async (req, res, next) => {
     });
   }
 };
-
 // change revenue account
 exports.updateEquityaccount = async (req, res, next) => {
   if (req.body.id == "" || req.body.id == undefined) {
@@ -251,9 +245,7 @@ exports.updateEquityaccount = async (req, res, next) => {
     });
   }
 };
-
 // delete revenue account from
-
 exports.deleteEquityaccount = async (req, res) => {
   if (req.body.id == "" || req.body.id == undefined) {
     res.status(400).send({ Message: "Id missing  :: Enter again" });
@@ -268,9 +260,7 @@ exports.deleteEquityaccount = async (req, res) => {
     });
   }
 };
-
 // read all accounts
-
 exports.readallEquityaccounts = async (req, res) => {
   if (req.body.name) {
     Equity.find(
@@ -305,6 +295,7 @@ exports.readallEquityaccounts = async (req, res) => {
 };
 
 /////////////////////For liability
+
 exports.addLiabilityaccount = async (req, res, next) => {
   if (req.body.name == "" || req.body.name == undefined) {
     res.status(400).send({ Message: "Missing Name :: Enter again" });
@@ -352,7 +343,6 @@ exports.addLiabilityaccount = async (req, res, next) => {
     });
   }
 };
-
 // change revenue account
 exports.updateLiabilityaccount = async (req, res, next) => {
   if (req.body.id == "" || req.body.id == undefined) {
@@ -389,9 +379,7 @@ exports.updateLiabilityaccount = async (req, res, next) => {
     });
   }
 };
-
 // delete revenue account from
-
 exports.deleteLiabilityaccount = async (req, res) => {
   if (req.body.id == "" || req.body.id == undefined) {
     res.status(400).send({ Message: "Id missing  :: Enter again" });
@@ -406,9 +394,7 @@ exports.deleteLiabilityaccount = async (req, res) => {
     });
   }
 };
-
 // read all accounts
-
 exports.readallLiabilityaccounts = async (req, res) => {
   if (req.body.name) {
     Liability.find(
