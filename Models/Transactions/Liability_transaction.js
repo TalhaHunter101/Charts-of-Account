@@ -5,12 +5,9 @@ const Liability_Transaction = new mongoose.Schema({
   User: { type: Schema.Types.ObjectId, ref: "Users" },
   Source: {
     type: Schema.Types.ObjectId,
-    ref: "Equity",
-    required: true,
   },
   Destination: {
     type: Schema.Types.ObjectId,
-    required: true,
   },
   Transaction: {
     Ammount: { type: Number, required: true },

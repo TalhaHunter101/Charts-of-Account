@@ -1,0 +1,1098 @@
+{
+	"info": {
+		"_postman_id": "5ec090f7-d281-44c9-9a15-1038b69990fc",
+		"name": "Accounts-Charts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Balance Sheet",
+			"item": [
+				{
+					"name": "Revenues",
+					"item": [
+						{
+							"name": "Add Account",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "revenueeee",
+											"type": "text"
+										},
+										{
+											"key": "parent",
+											"value": "61b87e03d1108a71747fb658",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/addrevenueaccount",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"addrevenueaccount"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete Account",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "61b0b8f82d61deea833577f2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/deleterevenueaccount",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"deleterevenueaccount"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Account",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "61b0c0a12271a26a156e1a92",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "superman revenue",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/updaterevenueaccount",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"updaterevenueaccount"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all accounts (filter)",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "market",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/readallaccounts",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"readallaccounts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Revenue",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "source",
+											"value": "61b8912fe8ee3116311748fe",
+											"type": "text"
+										},
+										{
+											"key": "destination",
+											"value": "61b87e03d1108a71747fb658",
+											"type": "text"
+										},
+										{
+											"key": "amount",
+											"value": "6700",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "incomming ",
+											"type": "text"
+										},
+										{
+											"key": "category",
+											"value": "revenue sales",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/addrevenue",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"addrevenue"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Revenue Tra",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "61b210fc44058f9d305b4c51",
+											"type": "text"
+										},
+										{
+											"key": "amount",
+											"value": "9999",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "become income",
+											"type": "text"
+										},
+										{
+											"key": "category",
+											"value": "revenue",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/updaterevenue",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"updaterevenue"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete revenue Tra",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "61b22eac0941c646d1070d78",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/deleterevenue",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"deleterevenue"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Transaction (filter)",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "category",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "source",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/readrevenue",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"readrevenue"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Expenses",
+					"item": [
+						{
+							"name": "Add Account",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "utility expensees more",
+											"type": "text"
+										},
+										{
+											"key": "parent",
+											"value": "61b331de1e33ef8d04cadce5",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/addexpenseaccount",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"addexpenseaccount"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete Account",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "61b0d591f773f53658960f89",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/deleteexpenseaccount",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"deleteexpenseaccount"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Account",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "61b0d5bef773f53658960f93",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "superman expense",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/updateexpenseaccount",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"updateexpenseaccount"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all accounts (filter)",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/readexpenseallaccounts",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"readexpenseallaccounts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Expense",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "source",
+											"value": "61b1cae100e5164071c2cc53",
+											"type": "text"
+										},
+										{
+											"key": "destination",
+											"value": "61b331de1e33ef8d04cadce5",
+											"type": "text"
+										},
+										{
+											"key": "amount",
+											"value": "8500",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "utility expense for electricity ",
+											"type": "text"
+										},
+										{
+											"key": "category",
+											"value": "Expense sales",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/addexpense",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"addexpense"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Expense",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "61b210fc44058f9d305b4c51",
+											"type": "text"
+										},
+										{
+											"key": "amount",
+											"value": "9999",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "become income",
+											"type": "text"
+										},
+										{
+											"key": "category",
+											"value": "revenue",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/updateexpense",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"updateexpense"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete Expense",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "61b22eac0941c646d1070d78",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/deleteexpense",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"deleteexpense"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Transaction (filter) expense",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "category",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "source",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/readexpense",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"readexpense"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Income Statement",
+			"item": [
+				{
+					"name": "Equityy",
+					"item": [
+						{
+							"name": "Add Account",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Owner Equity",
+											"type": "text"
+										},
+										{
+											"key": "parent",
+											"value": "61b1cae100e5164071c2cc53",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/addEquityaccount",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"addEquityaccount"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete Account",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "61b1cb0800e5164071c2cc5b",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/deleteEquityaccount",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"deleteEquityaccount"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Account",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "61b1cb0800e5164071c2cc5b",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "superman Equity",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/updateEquityaccount",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"updateEquityaccount"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all accounts (filter)",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/readallEquityaccounts",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"readallEquityaccounts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Equity transfer",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "source",
+											"value": "61b331f51e33ef8d04cadceb",
+											"type": "text"
+										},
+										{
+											"key": "destination",
+											"value": "61b32ca43283c0c08660b949",
+											"type": "text"
+										},
+										{
+											"key": "amount",
+											"value": "7800",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "utility expense",
+											"type": "text"
+										},
+										{
+											"key": "category",
+											"value": "Expense sales",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/addequitytransfer",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"addequitytransfer"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Assets",
+					"item": [
+						{
+							"name": "Add Account",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Bank ",
+											"type": "text"
+										},
+										{
+											"key": "parent",
+											"value": "61b762a9f6f68aab51b87151",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/addAssetsaccount",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"addAssetsaccount"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete Account",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "61b0d591f773f53658960f89",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/deleteAssetsaccount",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"deleteAssetsaccount"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Account",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "61b0d5bef773f53658960f93",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "superman expense",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/updateAssetsaccount",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"updateAssetsaccount"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all accounts (filter)",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/readallAssetsaccounts",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"readallAssetsaccounts"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Liability",
+					"item": [
+						{
+							"name": "Add Account",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Liability",
+											"type": "text"
+										},
+										{
+											"key": "parent",
+											"value": "61b0d591f773f53658960f89",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/addLiabilityaccount",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"addLiabilityaccount"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete Account",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "61b0d591f773f53658960f89",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/deleteLiabilityaccount",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"deleteLiabilityaccount"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Account",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "61b0d5bef773f53658960f93",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "superman expense",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/updateLiabilityaccount",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"updateLiabilityaccount"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all accounts (filter)",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8888/readallLiabilityaccounts",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8888",
+									"path": [
+										"readallLiabilityaccounts"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "generate Reports",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "expense",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8888/generate_reports",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"generate_reports"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -4,12 +4,10 @@ const Schema = mongoose.Schema;
 const Expense_Transaction = new mongoose.Schema({
   User: { type: Schema.Types.ObjectId, ref: "Users" },
   Paid_from: {
-    type: Schema.Types.ObjectId,    
-    required: true,
+    type: Schema.Types.ObjectId,
   },
   Destination: {
     type: Schema.Types.ObjectId,
-    required: true,
   },
   Transaction: {
     Ammount: { type: Number, required: true },

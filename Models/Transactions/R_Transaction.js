@@ -5,11 +5,10 @@ const R_Transaction = new mongoose.Schema({
   User: { type: Schema.Types.ObjectId, ref: "Users" },
   Deposited_To: {
     type: Schema.Types.ObjectId,
-    required: true,
   },
-  Destination: {// Category
+  Destination: {
+    // Category
     type: Schema.Types.ObjectId,
-    required: true,
   },
   Transaction: {
     Ammount: { type: Number, required: false },

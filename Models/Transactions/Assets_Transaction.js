@@ -4,13 +4,10 @@ const Schema = mongoose.Schema;
 const Assets_Transaction = new mongoose.Schema({
   User: { type: Schema.Types.ObjectId, ref: "Users" },
   Source: {
-    type: Schema.Types.ObjectId,
-    ref: "Assets",
-    required: true,
+    type: Schema.Types.ObjectId, 
   },
   Destination: {
     type: Schema.Types.ObjectId,
-    required: true,
   },
   Transaction: {
     Ammount: { type: Number, required: true },
