@@ -15,6 +15,8 @@ app.use(express.json());
 /////////////////////////// Users crud
 
 exports.adduser = async (req, res, next) => {
+  // console.log(req.user);
+
   if (req.body.firstname == "" || req.body.firstname == undefined) {
     res.status(400).json({ Message: "First name missing :: Enter again" });
     return;
@@ -35,7 +37,7 @@ exports.adduser = async (req, res, next) => {
       Message: "Password length should be greater than 6 :: Enter again",
     });
     return;
-  } else {
+  } else if (req.user.role == "admin" || req.user.role == "subadmin") {
     Users.findOne({ email: req.body.email }, (err, response) => {
       if (response) {
         res.status(400).json({
@@ -70,6 +72,11 @@ exports.adduser = async (req, res, next) => {
           });
       }
     });
+  } else {
+    res
+      .status(400)
+      .json({ Message: "You are not authorized for this request" });
+    return;
   }
 };
 exports.updateuser = async (req, res, next) => {
@@ -96,72 +103,104 @@ exports.updateuser = async (req, res, next) => {
   }
 };
 exports.listuser = async (req, res, next) => {
-  Users.findOne({ email: req.user.emil }, (err, find) => {
-    if (find) {
-      Users.find({}, (err, ufind) => {
-        if (ufind && ufind != "") {
-          res.status(200).json({ Message: "All the users are: ", Data: ufind });
+  if (
+    req.user.role == "admin" ||
+    req.user.role == "subadmin" ||
+    req.user.role == "supervisor"
+  ) {
+    Users.findOne({ email: req.user.emil }, (err, find) => {
+      if (find) {
+        Users.find({}, (err, ufind) => {
+          if (ufind && ufind != "") {
+            res
+              .status(200)
+              .json({ Message: "All the users are: ", Data: ufind });
+            return;
+          } else {
+            res.status(404).json({ Message: "No user Found" });
+            return;
+          }
+        });
+      } else {
+        res.status(404).json({ Message: "You are not our registered user" });
+        return;
+      }
+    });
+  } else {
+    res
+      .status(400)
+      .json({ Message: "You are not authorized for this request" });
+    return;
+  }
+};
+exports.viewuser = async (req, res, next) => {
+  if (req.user.role == "admin" || req.user.role == "subadmin") {
+    if ((req.body.role && !req.body.id) || (req.body.role && req.body.id)) {
+      Users.find(
+        { "Role_and_permissions.Role": req.body.role },
+        (err, dfind) => {
+          if (dfind && dfind != "") {
+            res.status(200).json({ Message: "Your user is: ", data: dfind });
+            return;
+          } else {
+            res.status(404).json({
+              Message:
+                "The Role provided does not belong to the user :: Enter again",
+            });
+            return;
+          }
+        }
+      );
+    } else if (req.body.id && !req.body.role) {
+      Users.findOne({ _id: req.body.id }, (err, dfind) => {
+        if (dfind) {
+          res.status(200).json({ Message: "Your user is: ", data: dfind });
           return;
         } else {
-          res.status(404).json({ Message: "No user Found" });
+          res.status(404).json({
+            Message:
+              "The id provided does not belong to the user :: Enter again",
+          });
           return;
         }
       });
-    } else {
-      res.status(404).json({ Message: "You are not our registered user" });
+    } else if (!req.body.id && !req.body.role) {
+      res.status(400).json({
+        Message: "Missing ID or role :: Enter again",
+      });
       return;
     }
-  });
-};
-exports.viewuser = async (req, res, next) => {
-  if ((req.body.role && !req.body.id) || (req.body.role && req.body.id)) {
-    Users.find({ "Role_and_permissions.Role": req.body.role }, (err, dfind) => {
-      if (dfind && dfind != "") {
-        res.status(200).json({ Message: "Your user is: ", data: dfind });
-        return;
-      } else {
-        res.status(404).json({
-          Message:
-            "The Role provided does not belong to the user :: Enter again",
-        });
-        return;
-      }
-    });
-  } else if (req.body.id && !req.body.role) {
-    Users.findOne({ _id: req.body.id }, (err, dfind) => {
-      if (dfind) {
-        res.status(200).json({ Message: "Your user is: ", data: dfind });
-        return;
-      } else {
-        res.status(404).json({
-          Message: "The id provided does not belong to the user :: Enter again",
-        });
-        return;
-      }
-    });
-  } else if (!req.body.id && !req.body.role) {
+  } else {
     res.status(400).json({
-      Message: "Missing ID or role :: Enter again",
+      Message: "You are not authorized for this requests.",
     });
     return;
   }
 };
 exports.deleteuser = async (req, res, next) => {
-  if (req.body.id == "" || req.body.id == undefined) {
-    res.status(400).json({ Message: "ID missing :: Enter again" });
-    return;
+  if (req.user.role == "admin" || req.user.role == "subadmin") {
+    if (req.body.id == "" || req.body.id == undefined) {
+      res.status(400).json({ Message: "ID missing :: Enter again" });
+      return;
+    } else {
+      Users.findOneAndDelete({ _id: req.body.id }, (err, dfind) => {
+        if (dfind) {
+          res.status(200).json({ Message: "User deleted" });
+          return;
+        } else {
+          res.status(404).json({
+            Message:
+              "The id provided does not belong to the user :: Enter again",
+          });
+          return;
+        }
+      });
+    }
   } else {
-    Users.findOneAndDelete({ _id: req.body.id }, (err, dfind) => {
-      if (dfind) {
-        res.status(200).json({ Message: "User deleted" });
-        return;
-      } else {
-        res.status(404).json({
-          Message: "The id provided does not belong to the user :: Enter again",
-        });
-        return;
-      }
-    });
+    res
+      .status(400)
+      .json({ Message: "You are not authorized for this request" });
+    return;
   }
 };
 exports.Login = async (req, res, next) => {
@@ -186,8 +225,9 @@ exports.Login = async (req, res, next) => {
       const verifypass = bcrypt.compareSync(req.body.password, user.password);
       if (verifypass == true) {
         const emil = req.body.email;
+        const role = user.Role_and_permissions.Role;
         const token = jwt.sign(
-          { user_id: user._id, emil },
+          { user_id: user._id, emil, role },
           process.env.TOKEN_SECRET,
           {
             expiresIn: "5h",
@@ -209,57 +249,84 @@ exports.Login = async (req, res, next) => {
   });
 };
 exports.updateUserstatus = async (req, res, next) => {
-  if (req.body.status == "" || req.body.status == undefined) {
-    res.status(400).json({
-      Message: "Status Missing :: Enter again",
-    });
-    return;
-  } else if (req.body.id == "" || req.body.id == undefined) {
-    res.status(400).json({
-      Message: "Id Missing :: Enter again",
-    });
-    return;
-  } else {
-    if (req.body.status == "active" || req.body.status == "inactive") {
-      Users.findByIdAndUpdate(
-        { _id: req.body.id },
-        { status: req.body.status },
-        (err, ufind) => {
-          if (ufind) {
-            res.status(404).json({
-              Message: "Status Updated..",
-              //   Data: ufind,
-            });
-            return;
-          } else {
-            res.status(404).json({
-              Message:
-                "The id provided does not belong to the user :: Enter again",
-            });
-            return;
-          }
-        }
-      );
-    } else {
+  if (req.user.role == "admin" || req.user.role == "subadmin") {
+    if (req.body.status == "" || req.body.status == undefined) {
       res.status(400).json({
-        Message: "The status should be 'active' or 'inactive' (lowercase)",
+        Message: "Status Missing :: Enter again",
       });
       return;
+    } else if (req.body.id == "" || req.body.id == undefined) {
+      res.status(400).json({
+        Message: "Id Missing :: Enter again",
+      });
+      return;
+    } else {
+      if (req.body.status == "active" || req.body.status == "inactive") {
+        Users.findByIdAndUpdate(
+          { _id: req.body.id },
+          { status: req.body.status },
+          (err, ufind) => {
+            if (ufind) {
+              res.status(404).json({
+                Message: "Status Updated..",
+                //   Data: ufind,
+              });
+              return;
+            } else {
+              res.status(404).json({
+                Message:
+                  "The id provided does not belong to the user :: Enter again",
+              });
+              return;
+            }
+          }
+        );
+      } else {
+        res.status(400).json({
+          Message: "The status should be 'active' or 'inactive' (lowercase)",
+        });
+        return;
+      }
     }
+  } else {
+    res
+      .status(400)
+      .json({ Message: "You are not authorized for this request. ::" });
+    return;
+  }
+};
+
+exports.viewuserprofile = async (req, res) => {
+  console.log(req.user.user_id);
+  if (req.user.user_id == req.body.id) {
+    Users.findOne({ _id: req.body.id }, (err, user) => {
+      if (user) {
+        res.status(200).send({ Message: "Your profile is :", User: user });
+      } else {
+        res
+          .status(400)
+          .json({ Message: "Your provided id record is not found" });
+        return;
+      }
+    });
+  } else {
+    res
+      .status(400)
+      .json({ Message: "You are not authorized for this request. ::" });
+    return;
   }
 };
 
 ////////////////////      Roles and permission CRUD
 
 exports.setRole = async (req, res, next) => {
-  console.log(req.body);
   if (req.body.id == "" || req.body.id == undefined) {
     res.status(400).json({ Message: "ID missing :: Enter again" });
     return;
   } else if (req.body.role == "" || req.body.role == undefined) {
     res.status(400).json({ Message: "Missing user Role :: Enter again" });
     return;
-  } else {
+  } else if (req.user.role == "admin" || req.user.role == "subadmin") {
     if (
       req.body.role == "user" ||
       req.body.role == "admin" ||
@@ -292,6 +359,11 @@ exports.setRole = async (req, res, next) => {
       });
       return;
     }
+  } else {
+    res
+      .status(400)
+      .json({ Message: "You are not authorized for this request" });
+    return;
   }
 };
 // exports.setRole = async (req, res, next) => {};
